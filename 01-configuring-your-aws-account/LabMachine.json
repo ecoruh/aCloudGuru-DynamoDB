@@ -72,6 +72,12 @@
       "Properties" : {
         "ImageId" : {"Fn::FindInMap" : ["AWSRegionToAMI", {"Ref" : "AWS::Region"}, "AMI"]},
         "InstanceType" : "t2.micro",
+        "NetworkInterfaces": [ {
+                "AssociatePublicIpAddress": "true",
+                "DeviceIndex": "0",
+                "GroupSet": ["sg-5a19be3e"],
+                "SubnetId": "subnet-242b7a53"
+           } ],
         "KeyName" : "DDBCourse",
         "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
           "#!/bin/bash -xe\n",
